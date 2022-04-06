@@ -1,12 +1,8 @@
-
-
-
-
 # Pipeline of Epigenome data analysis
 
 ## Overview
 
-This workshop recorded the whole processing steps of Epigenome data analysis, including the CUT&Tag-seq (ChIP-seq) and ATAC-seq data analysis, in CC-LY Lab written by Shawn (Xiangyu) Pan and Xuelan Chen. This page would be helpful and easy to be read and operated, especially for the bioinformatic new-hand. We will try to keep updating of ` Pipeline-of-Epigenome`. And this pipeline is flexible, you could broaden more analysis steps and tools integrated into this page, such as TF enrichment, bulk ATAC-seq data deconvolution and et al. We also expected you could add comments and provide request to improve this page. Hope you could had a good grip of the basic Epigenome data analysis rapidly and smoothly
+This workshop recorded the whole processing steps of Epigenome data analysis, including the CUT&Tag-seq (ChIP-seq) and ATAC-seq data analysis. This pipeline of analysis in CC-LY Lab was written by Shawn (Xiangyu) Pan and Xuelan Chen. This page would be helpful and easy to be read and operated, especially for the bioinformatic new-hand. We will try to keep updating of ` Pipeline-of-Epigenome`. And this pipeline is flexible, you could broaden more analysis steps and tools integrated into this page, such as TF enrichment, bulk ATAC-seq data deconvolution and et al. We also expected you could add comments and provide request to improve this page. Hope you could had a good grip of the basic Epigenome data analysis rapidly and smoothly
 
 ## **The analysis pipeline included**
 
@@ -105,6 +101,8 @@ You could visit them by clicking:
 ## [Part1. the pre-processing on `Linux` system in each CUT&Tag-seq sample](CUTTAG_pre.md)
 
 ## [Part2.  the statistic calculation on `R` environment in each CUT&Tag-seq data (updating)]() 
+
+
 
 ## [ ]. Keep updating
 
