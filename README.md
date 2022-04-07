@@ -102,9 +102,7 @@ You could visit them by clicking:
 
 
 
-## [Part2.  the statistic calculation on `R` environment in each CUT&Tag-seq data ]() 
-
----
+## [Part2.  the statistic calculation on `R` environment in each CUT&Tag-seq data](CUTTAG_R_calculation.md)
 
 ## For  ATAC-seq data 
 
