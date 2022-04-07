@@ -1,4 +1,4 @@
-# Part2.  the statistic calculation on `R` environment in each CUT&Tag-seq data
+# Part2.  the statistic calculation on `R` environment in CUT&Tag-seq data analysis
 
 ## 2.1 loading the package in R
 
