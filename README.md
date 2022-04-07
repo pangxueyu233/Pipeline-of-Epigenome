@@ -17,14 +17,14 @@ This workshop recorded the whole processing steps of Epigenome data analysis, in
    2. [x] SEACR
 6. [x] The `.bw` and `.bedgraph` files generation
 7. [x] Visualization of global distribution
-8. [ ] Differential Peaks analysis
-   1. [ ] Quantify peaks in all samples
-   2. [ ] PCA analysis of all samples.
-   3. [ ] hierarchical clustering of all samples
-   4. [ ] data normalization
-   5. [ ] Differential Peaks identification
-   6. [ ] Volcano map of Differential Peaks 
-   7. [ ] gene annotation
+8. [x] Differential Peaks analysis
+   1. [x] Quantify peaks in all samples
+   2. [x] PCA analysis of all samples.
+   3. [x] hierarchical clustering of all samples
+   4. [x] data normalization
+   5. [x] Differential Peaks identification
+   6. [x] Volcano map of Differential Peaks 
+   7. [x] gene annotation
 9. [ ] Motif/TF identification
 10. [ ] et al.
 
@@ -100,11 +100,15 @@ You could visit them by clicking:
 
 ## [Part1. the pre-processing on `Linux` system in each CUT&Tag-seq sample](CUTTAG_pre.md)
 
-## [Part2.  the statistic calculation on `R` environment in each CUT&Tag-seq data (updating)]() 
 
 
+## [Part2.  the statistic calculation on `R` environment in each CUT&Tag-seq data ]() 
 
-## [ ]. Keep updating
+---
+
+## For  ATAC-seq data 
+
+[ ]. Keep updating
 
 
 
