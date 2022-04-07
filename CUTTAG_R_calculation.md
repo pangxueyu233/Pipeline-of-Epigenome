@@ -17,7 +17,6 @@ suppressPackageStartupMessages({
   library(cowplot)
   library(ggplot2)
   library(velocyto.R)
-  library(trqwe)
   library(Rsamtools)
   library(GenomicFeatures)
   library(GenomicAlignments)
@@ -50,7 +49,7 @@ suppressPackageStartupMessages({
 To get the counts number of peaks in all samples, we need to integrate all peaks calling from all samples firstly. As you could import the `mac3` and/or `SEACR` results into `R` to make them be a `GRanges` object. 
 
 ~~~R
-Peaks <- list.files(path = "/mnt/data/user_data/xiangyu/workshop/CUTTAG/OTS_19_CUTTAG_35_samples_TL_PXY_9122/SEACR",
+Peaks <- list.files(path = "./SEACR",
                     pattern = glob2rx("*_0.01_non.stringent.bed*"),
                     full.names = TRUE)
 mPeak = GRanges()
@@ -86,14 +85,14 @@ GRanges object with 56660 ranges and 0 metadata columns:
 Then, we used the function `getCounts` implemented in `chromVAR` to quantify the counts number in all samples.
 
 ~~~R
-bamDir = list.files(path = "/mnt/data/user_data/xiangyu/workshop/CUTTAG/OTS_19_CUTTAG_35_samples_TL_PXY_9122/filter_bam/", pattern = ".filter_dupli.bam$", full.names = TRUE)
+bamDir = list.files(path = "./filter_bam/", pattern = ".filter_dupli.bam$", full.names = TRUE)
 All_data_ <- future_lapply(bamDir, function(bamFile) {
   fragment_counts <- getCounts(bamFile, masterPeak, paired = TRUE, by_rg = FALSE, format = "bam")
   sel_d <- as.data.frame(t(as.matrix(counts(fragment_counts))))
   return(sel_d)
   })
 All_data <- as.data.frame(rbindlist(All_data_))
-rownames(All_data) <- gsub("/mnt/data/user_data/xiangyu/workshop/CUTTAG/OTS_19_CUTTAG_35_samples_TL_PXY_9122/filter_bam/","",bamDir)
+rownames(All_data) <- gsub("./filter_bam/","",bamDir)
 rownames(All_data) <- gsub(".filter_dupli.bam","",rownames(All_data))
 All_data <- as.data.frame(t(All_data))
 masterPeak1 <- as.data.frame(masterPeak)
@@ -103,7 +102,8 @@ rownames(All_data) <- paste(masterPeak1$seqnames,masterPeak1$start,masterPeak1$e
 To make it easy to invoke the counts data in following analysis, you should store `All_data` as `.rds` and/or `,csv` files. 
 
 ~~~R
-mcsaveRDS(All_data,"/mnt/data/user_data/xiangyu/workshop/CUTTAG/OTS_19_CUTTAG_35_samples_TL_PXY_9122/analysis_data/Only_Ki67_counts.rds",mc.cores=20)
+saveRDS(All_data,"./analysis_data/Only_Ki67_counts.rds")
+write.csv(All_data,"./analysis_data/Only_Ki67_counts.csv")
 ~~~
 
 Then, you would get the counts as following: 
@@ -129,7 +129,7 @@ chr1_169009_171527            83
 As mentioned in home page, `DESeq2` would be used to normalize counts data of CUT&Tag-se, which was much better to reduce the effect of peak size and library size. 
 
 ~~~R
-All_data <- mcreadRDS("/mnt/data/user_data/xiangyu/workshop/CUTTAG/OTS_19_CUTTAG_35_samples_TL_PXY_9122/analysis_data/Only_Ki67_counts.rds",mc.cores=20)
+All_data <- readRDS("./analysis_data/Only_Ki67_counts.rds")
 selectR = which(rowSums(All_data) > 10) ## remove low count genes
 dataS = All_data[selectR,]
 chr_pos <- as.data.frame(do.call(rbind,str_split(rownames(dataS),"_")))
@@ -218,13 +218,14 @@ DESeq2_data_all <- as.data.frame(cbind(DESeq2_data[rownames(anno_H3K4me2_drug_vs
 To make it easy to invoke the normalized data and differential peaks results in following analysis, you should store `DESeq2_data_all` as `.rds` and/or `,csv` files. 
 
 ~~~R
-mcsaveRDS(DESeq2_data_all,"/mnt/data/user_data/xiangyu/workshop/CUTTAG/OTS_19_CUTTAG_35_samples_TL_PXY_9122/analysis_data/Only_H3K9me3_anno_Res_drug_vs_Ctrl.rds",mc.cores=20)
+saveRDS(DESeq2_data_all,"./analysis_data/Only_H3K9me3_anno_Res_drug_vs_Ctrl.rds")
+write.csv(DESeq2_data_all,"./analysis_data/Only_H3K9me3_anno_Res_drug_vs_Ctrl.csv")
 ~~~
 
 ## 2.6 The visualization of differential peaks
 
 ~~~R
-anno_H3K9me3_drug_vs_Ctrl <- mcreadRDS("/mnt/data/user_data/xiangyu/workshop/CUTTAG/OTS_19_CUTTAG_35_samples_TL_PXY_9122/analysis_data/Only_H3K9me3_anno_Res_drug_vs_Ctrl.rds",mc.cores=20)
+anno_H3K9me3_drug_vs_Ctrl <- readRDS("./analysis_data/Only_H3K9me3_anno_Res_drug_vs_Ctrl.rds")
 H3K9me3_KO_vs_WT <- as.data.frame(anno_H3K9me3_drug_vs_Ctrl)
 H3K9me3_KO_vs_WT[which(H3K9me3_KO_vs_WT$pvalue < 0.05 & H3K9me3_KO_vs_WT$log2FoldChange <= -0.5),'threshold'] <- 'Down'
 H3K9me3_KO_vs_WT[which(H3K9me3_KO_vs_WT$pvalue < 0.05 & H3K9me3_KO_vs_WT$log2FoldChange >= 0.5),'threshold'] <- 'Up'
