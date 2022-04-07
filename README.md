@@ -34,8 +34,10 @@ This workshop recorded the whole processing steps of Epigenome data analysis, in
 2. [ ] Quality Control of raw data
 3. [ ] Alignment
 4. [ ] PCR duplicates removing
+4. [ ] chrMT removing
 5. [ ] Peak calling
    1. [ ] MACS2/3
+   1. [ ] HMMRATAC 
 6. [ ] The `.bw` and `.bedgraph` files generation
 7. [ ] Visualization of global distribution
 8. [ ] Differential Peaks analysis
