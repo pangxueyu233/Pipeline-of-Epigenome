@@ -1,4 +1,4 @@
-# Pipeline of Epigenome data analysis
+# Pipeline of Epigenome data analysis<img src="README.assets/Epigenome-google-font.png" align="right" width="120" />
 
 ## Overview
 
